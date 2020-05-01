@@ -10,7 +10,7 @@ function getResult(a,b,c){
         x.push((- b - Math.sqrt(d)) / (2 * a));
         return x;      
     } else if (d == 0) {
-        x = - b / (2 * a);
+        x.push(-b / (2 * a));
         return x;
     } else {
         return x;
@@ -21,8 +21,8 @@ function getAverageMark(marks){
     let sum = 0;
     let averageMarks;
 
-if (marks == []) { 
-    averageMarks = 0;
+if (marks.length == 0) { 
+    averageMarks = sum;
     return averageMarks;
 } else {
     if (marks.length > 5) {
@@ -61,7 +61,7 @@ function askDrink(name, dateOfBirthday){
             return result;
             }
         }
-        result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
-        return result;
     }
+    result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+    return result;
 }
