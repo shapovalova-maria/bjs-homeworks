@@ -1,5 +1,6 @@
+'use strict';
 function getResult(a,b,c){
-    'use strict';
+    
     let x = [];
     let d;
 
@@ -8,13 +9,10 @@ function getResult(a,b,c){
     if (d > 0) {
         x.push((- b + Math.sqrt(d)) / (2 * a));
         x.push((- b - Math.sqrt(d)) / (2 * a));
-        return x;      
     } else if (d == 0) {
         x.push(-b / (2 * a));
-        return x;
-    } else {
-        return x;
     }
+    return x;
 }
 
 function getAverageMark(marks){
@@ -22,8 +20,7 @@ function getAverageMark(marks){
     let averageMarks;
 
 if (marks.length == 0) { 
-    averageMarks = sum;
-    return averageMarks;
+    return 0;
 } else {
     if (marks.length > 5) {
     console.log("Количество оценок больше 5!");
@@ -31,8 +28,7 @@ if (marks.length == 0) {
     marks = marks.slice(0,5);
     for (let i = 0; i < marks.length; i++) {
         sum += marks[i];
-        averageMarks = sum / marks.length;
-    }
+    } averageMarks = sum / marks.length;
   }
     return averageMarks;
 }
@@ -41,11 +37,11 @@ function askDrink(name, dateOfBirthday){
     let result;
 
     let dayToday = new Date().getDate();
-    let monthToday = new Date().getMonth();
+    let monthToday = new Date().getMonth() + 1;
     let yearToday = new Date().getFullYear();
 
     let dayOfBorn = dateOfBirthday.getDate(); 
-    let monthOfBorn = dateOfBirthday.getMonth();
+    let monthOfBorn = dateOfBirthday.getMonth() + 1;
     let yearOfBorn = dateOfBirthday.getFullYear();
     
     if ((yearToday - yearOfBorn) > 18) {
