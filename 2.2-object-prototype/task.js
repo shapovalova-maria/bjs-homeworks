@@ -19,10 +19,8 @@ function getAverageMark(marks) {
 
 function checkBirthday(birthday) {
    
-    const now = new Date();
-    const dateOfbirthday = new Date(birthday);
-    
-    birthday = +dateOfbirthday;
+    const now = +(new Date());
+    birthday = +(new Date(birthday));
    
     const diff = now - birthday;
 
