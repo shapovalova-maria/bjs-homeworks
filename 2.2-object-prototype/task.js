@@ -1,14 +1,33 @@
 function getAnimalSound(animal) {
-    // код для задачи №1 писать здесь
-    // return animalSound;
+    
+    if (animal == undefined) {
+        return null;
+    } 
+
+    const sound = animal.sound;
+    return sound;
 }
 
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
-    // return averageMark
+    let average = 0;
+    for (let i = 0; i < marks.length; i++) {
+        average += marks[i];
+    }
+    roundedAverage = Math.round(average / marks.length);
+    return roundedAverage || 0;
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №3 писать здесь
-    // return verdict
+   
+    const now = new Date();
+    const dateOfbirthday = new Date(birthday);
+    
+    birthday = +dateOfbirthday;
+   
+    const diff = now - birthday;
+
+    const age = diff * 2 / (31536000000 + 31622400000);
+
+    return ((age > 18) ? true : false);
+
 }
