@@ -13,7 +13,7 @@ function getAverageMark(marks) {
     for (let i = 0; i < marks.length; i++) {
         average += marks[i];
     }
-    roundedAverage = Math.round(average / marks.length);
+   const roundedAverage = Math.round(average / marks.length);
     return roundedAverage || 0;
 }
 
@@ -26,6 +26,6 @@ function checkBirthday(birthday) {
 
     const age = diff * 2 / (31536000000 + 31622400000);
 
-    return ((age > 18) ? true : false);
+    return age >= 18;
 
 }
