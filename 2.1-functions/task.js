@@ -17,20 +17,21 @@ function getSolutions (a, b, c) {
 function showSolutionsMessage (a, b, c) {
     let result = getSolutions(a, b, c);
 
-    if (D < 0) {
-        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n`
-    `Значение дискриминанта: ${result}\n`
-    `Уравнение не имеет вещественных корней`);
-    } else if (D == 0) {
-        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n`
-    `Значение дискриминанта: ${result}\n`
-    `Уравнение имеет один корень X₁ = ${x1}`);
+    if (result.D < 0) {
+        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n 
+    Значение дискриминанта: ${result.D}\n
+    Уравнение не имеет вещественных корней`);
+    } else if (result.D == 0) {
+        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n
+        Значение дискриминанта: ${result.D}\n
+        Уравнение имеет один корень X₁ = ${result.x1}`);
     } else {
-        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n`
-    `Значение дискриминанта: ${result}\n`
-    `Уравнение имеет два корня. X₁ = ${x1}, X₂ = ${x2}`);
+        return(`Вычисляем корни квадратного уравнения ax² + bx + c\n
+        Значение дискриминанта: ${result.D}\n
+        Уравнение имеет два корня. X₁ = ${result.x1}, X₂ = ${result.x2}`);
     }
 }
+
 
 function getAverageScore(date) {
     let sum = 0;
@@ -61,8 +62,12 @@ function getAverageMark(marks) {
 
 
 function getPersonData(secretData) {
+let firstName;
+let lastName;
 
-    if (secretData.aaa == 0) {
+if (secretData.aaa === '' || secretData.bbb === '') {
+    getDecodedValue(secretData);
+} else if (secretData.aaa == 0) {
         firstName = 'Родриго';
     } else {firstName = 'Эмильо';
      }
@@ -71,7 +76,7 @@ function getPersonData(secretData) {
     } else {lastName = 'Эмильо'}
 
     return {firstName: firstName,
-        lastName: lastName};
+        lastName: lastName};   
 
 }
 
