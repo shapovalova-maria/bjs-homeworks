@@ -24,11 +24,11 @@ function showSolutionsMessage (a, b, c) {
     } else if (result.D == 0) {
         return(`Вычисляем корни квадратного уравнения ax² + bx + c\n
         Значение дискриминанта: ${result.D}\n
-        Уравнение имеет один корень X₁ = ${result.x1}`);
+        Уравнение имеет один корень X₁ = ${result.roots[0]}`);
     } else {
         return(`Вычисляем корни квадратного уравнения ax² + bx + c\n
         Значение дискриминанта: ${result.D}\n
-        Уравнение имеет два корня. X₁ = ${result.x1}, X₂ = ${result.x2}`);
+        Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`);
     }
 }
 
