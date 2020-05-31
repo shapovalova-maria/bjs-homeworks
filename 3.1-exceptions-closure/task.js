@@ -13,7 +13,8 @@ function validateCount(arg) {
         parseCount(arg);
     }
     catch(err) {
-        return "Невалидное значение";
+        return err; 
+   
     }
     return parseCount(arg);
 }
@@ -51,9 +52,9 @@ class Triangle {
  function getTriangle(a, b, c) {
 let triangle = new Triangle(a, b, c);
 try {
-    triangle;
+   return triangle;    
 }
 catch(err) {
-    return  triangle.getPerimeter("Ошибка! Неправильный треугольник");
- } return triangle;
+    return err;
+ } 
  }
