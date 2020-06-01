@@ -18,7 +18,7 @@ class Weapon {
 
     if (this.durability === 0) {
         return 0;
-    } else if (this.durability <= this.initialDurability * 0,3) {
+    } else if (this.durability <= this.initialDurability * 0.3) {
         return this.attack / 2;
     } else {
         return this.attack;
@@ -31,106 +31,108 @@ class Weapon {
 }
 
 class Bow extends Weapon {
-
+  constructor() {
+    super({
+    name: "Лук",
+    attack: 10,
+    durability: 200,
+    range: 3
+  });
+}
 }
 
 class Arm extends Weapon {
- 
-  
+  constructor() {
+    super({
+      name: "Рука",
+      attack: 1, 
+      durability: Infinity,
+      range: 1
+    });
+  }
 }
 
-class Blade extends Weapon {
-
+class Sword extends Weapon {
+  constructor() {
+    super({
+      name: "Меч",
+      attack: 25,
+      durability: 500,
+      range: 1
+    });
+  }
 }
 
 class Knife extends Weapon {
-
+  constructor() {
+    super({
+      name: "Нож",
+      attack: 5,
+      durability: 300,
+      range: 1
+    });
+  }
 }
 
 class Staff extends Weapon {
-
+  constructor() {
+    super({
+      name: "Посох",
+      attack: 8,
+      durability: 300,
+      range: 2
+    });
+  }
 }
 
 class LongBow extends Bow {
-
+  constructor() {
+    super();
+    this.name = 'Длинный лук',
+    this.attack = 15,
+    this.range = 4
+  };
 }
 
-class Axe extends Blade {
-
+class Axe extends Sword {
+  constructor() {
+    super();
+    this.name = 'Секира',
+    this.attack = 27,
+    this.durability = 800
+  };
 }
 
 class StormStaff extends Staff {
-
+  constructor() {
+    super();
+    this.name = 'Посох Бури',
+    this.attack = 10,
+    this.range = 3
+  };
 }
 
-// const sword = new Weapon({
-//     name: 'Старый меч',
-//     attack: 20,
-//     durability: 10,
-//     range: 1,
-//   });
+   const arm = new Arm();
 
-  const arm = new Arm({
-    name: 'Рука',
-    attack: 1,
-    durability: Infinity,
-    range: 1,
-  });
+   const bow = new Bow();
 
-  const bow = new Bow({
-    name: 'Лук',
-    attack: 10,
-    durability: 200,
-    range: 3,
-  });
+   const blade = new Sword();
 
-  const blade = new Blade({
-    name: 'Меч',
-    attack: 25,
-    durability: 500,
-    range: 1,
-  });
+   const knife = new Knife();
 
-  const knife = new Knife({
-    name: 'Нож',
-    attack: 5,
-    durability: 300,
-    range: 1,
-  });
+   const staff = new Staff();
 
-  const staff = new Staff({
-    name: 'Посох',
-    attack: 8,
-    durability: 300,
-    range: 2,
-  });
-
-  const longBow = new LongBow({
-    name: 'Длинный лук',
-    attack: 15,
-    durability: bow.durability,
-    range: 4,
-  });
+   const longBow = new LongBow();
   
-  const axe = new Axe({
-    name: 'Секира',
-    attack: 27,
-    durability: 800,
-    range: blade.range,
-  });
+   const axe = new Axe();
 
-  const stormStaff = new StormStaff({
-    name: 'Посох Бури',
-    attack: 10,
-    durability: staff.durability,
-    range: 3,
-  });
+   const stormStaff = new StormStaff();
 
 
 class StudentLog {
   constructor (name) {
     this.name = name;
-    this.scores = {};
+    this.scores = [];
   }
 
   getName() {
@@ -138,25 +140,24 @@ class StudentLog {
   }
 
   addGrade(grade, subject) {
-    if (typeof grade != Number) {
-      return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.\n`;
-    } else 
-    if (grade > 5 & grade < 1) {
-      return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.\n`;
+    if (Number.isInteger(grade)) {
+      if (grade < 5 & grade > 1) {
+        return this.scores.push(grade);
+      } 
     } else {    
-    this.scores.subject.push(grade);
-    }
+    return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.\n`;
+    } 
   }
 
   getAverageBySubject(subject) {
     this.scores.push(subject);
-    if (this.scores.subject.length === 0) {
+    if (this.scores.length === 0) {
       return 0;
     } else {
     let sum = 0;
-    for (let score of this.scores.subject) {
+    for (let score of this.scores) {
       sum += score;
-   }  return sum / this.scores.subject.length;}
+   }  return sum / this.scores.length;}
 
   }
 
@@ -168,7 +169,8 @@ class StudentLog {
     for (let i = 0; i < averGrade.length; i++) {
       let averSum = 0;
       averSum += averGrade[i];
-    } return everSum / averGrade.length;}
+    } return averSum / averGrade.length;
+  }
   }
 }
 
