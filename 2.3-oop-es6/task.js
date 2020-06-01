@@ -163,7 +163,7 @@ class StudentLog {
 
   getTotalAverage() {
     let averGrade = getAverageBySubject();
-    if (this.scores.subject.length === 0) {
+    if (this.scores.length === 0) {
       return 0;
     } else {
     for (let i = 0; i < averGrade.length; i++) {
