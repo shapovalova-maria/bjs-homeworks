@@ -132,7 +132,9 @@ class StormStaff extends Staff {
 class StudentLog {
   constructor (name) {
     this.name = name;
+    this.subject = [];
     this.scores = [];
+
   }
 
   getName() {
@@ -141,11 +143,11 @@ class StudentLog {
 
   addGrade(grade, subject) {
     if (Number.isInteger(grade)) {
-      if (grade < 5 & grade > 1) {
+      if (grade <= 5 & grade >= 1) {
         return this.scores.push(grade);
       } 
-    } else {    
-    return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.\n`;
+    } else {
+      return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.\n`;  
     } 
   }
 
@@ -155,19 +157,19 @@ class StudentLog {
       return 0;
     } else {
     let sum = 0;
-    for (let score of this.scores) {
-      sum += score;
+    for (let i = 0; i < this.scores.length; i++) {
+      sum += this.scores[i];
    }  return sum / this.scores.length;}
 
   }
 
   getTotalAverage() {
-    let averGrade = getAverageBySubject();
+    let averGrade = addGrade();
     if (this.scores.length === 0) {
       return 0;
     } else {
-    for (let i = 0; i < averGrade.length; i++) {
       let averSum = 0;
+    for (let i = 0; i < averGrade.length; i++) {
       averSum += averGrade[i];
     } return averSum / averGrade.length;
   }
