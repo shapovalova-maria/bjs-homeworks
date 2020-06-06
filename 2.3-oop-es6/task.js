@@ -174,10 +174,10 @@ class StudentLog {
 
   getTotalAverage() {
      let  averGrade = this.getAverageBySubject();
-     if (Number.isNaN(Number.parseInt(averGrade))) {
-     let averSum = 0;
-    for (let i = 0; i < averGrade.length; i++) {
-      averSum += averGrade[i];
+     if (averGrade.length > 1) {
+        let averSum = 0;
+    for (let i of averGrade) {
+      averSum += i;
     } return averSum / averGrade.length;
      }
     else {
