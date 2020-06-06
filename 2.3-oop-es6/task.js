@@ -174,14 +174,11 @@ class StudentLog {
 
   getTotalAverage() {
      let  averGrade = this.getAverageBySubject();
-     if (averGrade.length > 1) {
-        let averSum = 0;
-    for (let i of averGrade) {
+     let averSum = 0;
+     if (Array.isArray(averGrade)) {
+     for (let i of averGrade) {
       averSum += i;
-    } return averSum / averGrade.length;
-     }
-    else {
-      return averGrade;
-  }
+    } 
+     } return averSum / averGrade.length;
   }
 }
