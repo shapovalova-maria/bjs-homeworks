@@ -143,7 +143,7 @@ class StudentLog {
     if (Number.isInteger(grade)) {
       if (grade <= 5 && grade >= 1) {
         if (this.scores.find(x => x.subjectName === subject)) {
-          this.scores.find(x => x.subjectName === subject).push(grade);    //<--------------
+          this.scores.grades.push(grade);    //<--------------
         } else {
         this.scores.push(
           {subjectName: subject,
