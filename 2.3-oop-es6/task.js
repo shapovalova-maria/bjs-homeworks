@@ -142,10 +142,13 @@ class StudentLog {
   addGrade(grade, subject) {
     if (Number.isInteger(grade)) {
       if (grade <= 5 && grade >= 1) {
+        if (this.scores.find(x => x.subjectName === subject)) {
+          this.scores.find(x => x.subjectName === subject).push(grade);    //<--------------
+        } else {
         this.scores.push(
-          {subject: subject,
-          grade: grade}
-        );
+          {subjectName: subject,
+          grades: [grade]}
+        );}
         return this.scores;
       } 
     } else {
@@ -155,20 +158,13 @@ class StudentLog {
 
   getAverageBySubject(subject) {
     let sum = 0;
-    let scoresLength;
-     
-    for (let i = 0; i < this.scores.length; i++) {
-      scoresLength = i + 1;
-      if ( this.scores[i].subject == subject) {
-        sum += this.scores[i].grade; 
-        sum = sum / scoresLength;
-      } 
-   }   this.scores.push({totalSum: sum}); 
-  if (Array.isArray(this.scores.totalSum)) {
-   return this.scores.totalSum;
-  } else {
-    return sum;
-  }
+    if (this.scores.find(x => x.subjectName === subject)) {
+      for (let i = 0; i < this.scores['grades'].length; i++) {
+          sum += this.scores.grades[i]; 
+        } sum = sum / this.scores['grades'].length;
+     } 
+     return sum;
+  
     
   }
 
@@ -176,7 +172,7 @@ class StudentLog {
      let  averGrade = this.getAverageBySubject();
      let averSum = 0;
      if (Array.isArray(averGrade)) {
-     for (let i of averGrade) {
+     for (let i in averGrade) {
       averSum += i;
     } 
      } return averSum / averGrade.length;
